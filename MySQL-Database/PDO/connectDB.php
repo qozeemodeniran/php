@@ -15,23 +15,35 @@ try
 	$connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 	echo "Successfull database connection.<br><br>";
 
-	// sql to create table
-	$table_sql = "CREATE TABLE MyClients (
-	id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-  	firstname VARCHAR(30) NOT NULL,
-  	lastname VARCHAR(30) NOT NULL,
-  	email VARCHAR(50),
-  	reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-  	)";
+	// // sql to create table
+	// $table_sql = "CREATE TABLE MyClients (
+	// id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+ //  	firstname VARCHAR(30) NOT NULL,
+ //  	lastname VARCHAR(30) NOT NULL,
+ //  	email VARCHAR(50),
+ //  	reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+ //  	)";
 
-  	// use exec() 'cos no results are returned
-  	$connection->exec($table_sql);
-  	echo "Table MyClients created successfully";
+ //  	// use exec() 'cos no results are returned
+ //  	$connection->exec($table_sql);
+ //  	echo "Table MyClients created successfully";
+
+	// sql to insert data into table
+	$insert_sql = "INSERT INTO MyClients (firstname, lastname, email)
+	VALUES ('Ola', 'Idris', 'olaidris@gmail.com')";
+
+	// check insert
+	$connection->exec($insert_sql);
+	echo "New record added to table";
 
 }
 catch (PDOException $e)
 {
-	echo $table_sql . "<br>" . $e->getMessage();
+	// catch for table
+	// echo $table_sql . "<br>" . $e->getMessage();
+
+	// catch for insert
+	echo "Error: " . $insert_sql . "<br>" . $e->getMessage();
 }
 
 $connection = null;

@@ -16,23 +16,37 @@ if (!$connection)
 }
 echo "Successfull database connection.<br><br>";
 
-// sql to create table
-$table_sql = "CREATE TABLE MyClients (
-id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-firstname VARCHAR(30) NOT NULL,
-lastname VARCHAR(30) NOT NULL,
-email VARCHAR(50),
-reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-)";
+// // sql to create table
+// $table_sql = "CREATE TABLE MyClients (
+// id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+// firstname VARCHAR(30) NOT NULL,
+// lastname VARCHAR(30) NOT NULL,
+// email VARCHAR(50),
+// reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+// )";
 
 // check table creation
-if (mysqli_query($connection, $table_sql))
+// if (mysqli_query($connection, $table_sql))
+// {
+// 	echo "Table MyClients created successfully";
+// }
+// else
+// {
+// 	echo "Error creating table: " . mysqli_error($connection);
+// }
+
+// sql to insert data into table
+$insert_sql = "INSERT INTO MyClients (firstname, lastname, email)
+VALUES('Azeez', 'Odeniran', 'azeezodeniran@gmail.com')";
+
+// check insert
+if (mysqli_query($connection, $insert_sql))
 {
-	echo "Table MyClients created successfully";
+	echo "New record added successfully";
 }
 else
 {
-	echo "Error creating table: " . mysqli_error($connection);
+	echo "Error: " . $table_sql ."<br>" .mysqli_error($connection);
 }
 
 // close db connection

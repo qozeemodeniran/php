@@ -17,23 +17,18 @@ if ($connection->connect_error)
 }
 echo "Successfully connected to database.<br><br>";
 
-// sql t create table
-$table_sql = "CREATE TABLE MyClients (
-id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-firstname VARCHAR(30) NOT NULL,
-lastname VARCHAR(30) NOT NULL,
-email VARCHAR(50),
-reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-)";
+// sql to insert data into table
+$insert_sql = "INSERT INTO MyClients (firstname, lastname, email)
+VALUES ('Qozeem', 'Odeniran', 'qozeemodeniran@gmail.com')";
 
-// check create table
-if ($connection->query($table_sql) === TRUE)
+// check insert
+if ($connection->query($insert_sql) === TRUE)
 {
-	echo "Table created successfully.<br><br>";
+	echo "New record created Successfully<br><br>";
 }
-else 
+else
 {
-	echo "Error creating table: " . $connection->error;
+	echo "Error: " . $insert_sql . $connection->error;
 }
 
 // close databse connection
