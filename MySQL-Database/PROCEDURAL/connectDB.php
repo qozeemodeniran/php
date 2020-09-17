@@ -4,9 +4,10 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
+$dbname = "myDB_pro";
 
 // create connection
-$connection = mysqli_connect($servername, $username, $password);
+$connection = mysqli_connect($servername, $username, $password, $dbname);
 
 // check connection
 if (!$connection)
@@ -15,15 +16,23 @@ if (!$connection)
 }
 echo "Successfull database connection.<br><br>";
 
-// sql to create database
-$db_sql = "CREATE DATABASE myDB_pro";
-if (mysqli_query($connection, $db_sql))
+// sql to create table
+$table_sql = "CREATE TABLE MyClients (
+id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+firstname VARCHAR(30) NOT NULL,
+lastname VARCHAR(30) NOT NULL,
+email VARCHAR(50),
+reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+)";
+
+// check table creation
+if (mysqli_query($connection, $table_sql))
 {
-	echo "Database created successfully";
+	echo "Table MyClients created successfully";
 }
 else
 {
-	echo "Error creating database: " . mysqli_error($connection);
+	echo "Error creating table: " . mysqli_error($connection);
 }
 
 // close db connection
