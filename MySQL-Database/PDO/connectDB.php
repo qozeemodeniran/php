@@ -34,7 +34,10 @@ try
 
 	// check insert
 	$connection->exec($insert_sql);
-	echo "New record added to table";
+	// get last id
+	$last_inserted_id = $connection->lastInsertId();
+	echo "New record added to table<br><br>";
+	echo "The last inserted id is: " . $last_inserted_id;
 
 }
 catch (PDOException $e)

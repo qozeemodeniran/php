@@ -42,7 +42,10 @@ VALUES('Azeez', 'Odeniran', 'azeezodeniran@gmail.com')";
 // check insert
 if (mysqli_query($connection, $insert_sql))
 {
-	echo "New record added successfully";
+	// get last inserted id
+	$last_inserted_id = mysqli_insert_id($connection);
+	echo "New record added successfully<br><br>";
+	echo "The last inserted id is: " . $last_inserted_id;
 }
 else
 {

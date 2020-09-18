@@ -19,12 +19,17 @@ echo "Successfully connected to database.<br><br>";
 
 // sql to insert data into table
 $insert_sql = "INSERT INTO MyClients (firstname, lastname, email)
-VALUES ('Qozeem', 'Odeniran', 'qozeemodeniran@gmail.com')";
+VALUES ('Jibril', 'Odeniran', 'jibrilodeniran@gmail.com')";
 
 // check insert
 if ($connection->query($insert_sql) === TRUE)
 {
+	// get last inserted id
+	$last_inserted_id = $connection->insert_id;
+
 	echo "New record created Successfully<br><br>";
+	echo "The last id inserted is: " . $last_inserted_id;
+
 }
 else
 {
