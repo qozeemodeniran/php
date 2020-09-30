@@ -14,23 +14,55 @@ if(!$connection)
     die("failed database connection: ".mysqli_connect_error());
 }
 
-// insert data into table
-$create = "INSERT INTO users 
-(
+// Insert multiple into table
+$insert = "INSERT INTO users (
     firstname, lastname, email
 )
-VALUES
-(
-    'Qozeem', 'Odeniran', 'qozeemodeniran@gmail.com'
+VALUES(
+    'Ahmed', 'Oladejo', 'ahmedoladejo@gmail.com'
+);";
+$insert .= "INSERT INTO users(
+    firstname, lastname, email
+)
+VALUES(
+    'Simbiat', 'Oke', 'okesimbiat@gmail.com'
+);";
+$insert .= "INSERT INTO users(
+    firstname, lastname, email
+)
+VALUES(
+    'Segun', 'Quadri', 'segunquadri@gmail.com'
 )";
-if (mysqli_query($connection, $create))
+if (mysqli_multi_query($connection, $insert))
 {
-    echo "New records added to table";
+    echo "Added new records to users";
 }
 else
 {
-    echo "Error: " . $sql . "<br>" . mysqli_error($connection);
+    echo "Error: " . $insert . mysqli_error($connection);
 }
+
+
+// // ---------------INSERT AND GET LAST_ID CODE---------------------
+// // insert data into table
+// $create = "INSERT INTO users 
+// (
+//     firstname, lastname, email
+// )
+// VALUES
+// (
+//     'Qozeem', 'Odeniran', 'qozeemodeniran@gmail.com'
+// )";
+// if (mysqli_query($connection, $create))
+// {
+//     $lastId = mysqli_insert_id($connection);
+//     echo "New records added to table.<br>
+//     The last inserted id is: " . $lastId;
+// }
+// else
+// {
+//     echo "Error: " . $sql . "<br>" . mysqli_error($connection);
+// }
 
 // // ---------------------TABLE CODE-----------------------------
 // // create table

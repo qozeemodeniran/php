@@ -13,17 +13,41 @@ try
     // set pdo error mode to exception
     $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    // insert data into table
-    $create = "INSERT INTO users 
-    (
+    // Insert multiple records
+        // Begin transaction
+    $connection->beginTransaction();
+        // SQL Statements
+    $connection->exec("INSERT INTO users (
         firstname, lastname, email
     )
-    VALUES
-    (
-        'Qozeem', 'Odeniran', 'qozeemodeniran@gmail.com'
-    )";
-    $connection->exec($create);
-    echo "New record added to table";
+    VALUES(
+        'Ridwan', 'Busari', 'ridwanbusari@gmail.com'
+    )");
+    $connection->exec("INSERT INTO users (
+        firstname, lastname, email
+    )
+    VALUES(
+        'Adedotun', 'Ogunwuyi', 'dotunogunwuyi@gmail.com'
+    )");
+
+    // Commit the transaction
+    $connection->commit();
+    echo "New records added successfully";
+
+    // // -------------------INSERT AND LAST_ID CODE---------------
+    // // insert data into table
+    // $create = "INSERT INTO users 
+    // (
+    //     firstname, lastname, email
+    // )
+    // VALUES
+    // (
+    //     'Qozeem', 'Odeniran', 'qozeemodeniran@gmail.com'
+    // )";
+    // $connection->exec($create);
+    // $lastId = $connection->lastInsertId();
+    // echo "New record added to table.<br>
+    // The last id is: " . $lastId;
 
     // // ----------------------TABLE CODE---------------------------
     // // create table
@@ -48,7 +72,10 @@ try
 }
 catch(PDOException $e)
 {
-    echo $create . "<br>" > $e->getMessage();
+    $connection->rollback();
+    echo "Error: " . $e->getMessage();
+
+    // echo $create . "<br>" > $e->getMessage();--------INSERT AND LAST_ID CODE
 
     // echo $create . "<br>" . $e->getMessage();--------TBALE CODE
 

@@ -14,23 +14,61 @@ if($connection->connect_error)
     die("Failed to connect to database: ".$connection->connect_error);
 }
 
-// insert data into table
-$create = "INSERT INTO users 
+// Insert nultiple records into table
+$insert = "INSERT INTO users
 (
     firstname, lastname, email
 )
-VALUES
+VALUES 
 (
-    'Qozeem', 'Odeniran', 'qozeemodeniran@gmail.com'
-)";
-if ($connection->query($create) === TRUE)
+    'Azeez', 'Aremu', 'azeezaremu@gmail.com'
+);";
+$insert .= "INSERT INTO users
+(
+    firstname, lastname, email
+)
+VALUES 
+(
+    'Junaid', 'Babatunde', 'junaidbabatunde@gmail.com'
+);";
+
+$insert .= "INSERT INTO users
+(
+    firstname, lastname, email
+)
+VALUES 
+(
+    'Ismail', 'Owoade', 'ismailowoade@gmail.com'
+);";
+if ($connection->multi_query($insert) == TRUE)
 {
-    echo "Records added to table";
+    echo "Created new records succesfully";
 }
-else 
+else
 {
-    echo "Error: " . $sql . "<br>" .  $connection->error;
+    echo "Error: " . $insert . "<br>" . $connection->error;
 }
+
+// // ------------------------INSERT CODE $ LAST_ID-----------------------
+// // insert data into table
+// $create = "INSERT INTO users 
+// (
+//     firstname, lastname, email
+// )
+// VALUES
+// (
+//     'Jibril', 'Odeniran', 'jibrilodeniran@gmail.com'
+// )";
+// if ($connection->query($create) === TRUE)
+// {
+//     $lastId = $connection->insert_id;
+//     echo "Records added to table. <br>
+//     The last inserted id is: " . $lastId;
+// }
+// else 
+// {
+//     echo "Error: " . $sql . "<br>" .  $connection->error;
+// }
 
 // // --------------------------TABLE CODE-------------------------
 // // create table
@@ -62,6 +100,8 @@ else
 // {
 //     echo "Failed to create database: ".$connection->error;
 // }
+
+// 
 
 // close connection
 $connection->close();

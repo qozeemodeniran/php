@@ -1,4 +1,5 @@
 <?php
+
 //REGULAR EXPRESSION FUNCTIONS...
 //preg_match()
 $str = "Visit QozeemOdeniran.";
@@ -19,4 +20,3 @@ echo "<br><br>";
 $str4 = "Apples and banana";
 $pattern4 = "/ba(na){2}/i";
 echo preg_match($pattern4, $str4);
-?>
