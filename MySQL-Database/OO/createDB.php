@@ -14,40 +14,64 @@ if($connection->connect_error)
     die("Failed to connect to database: ".$connection->connect_error);
 }
 
-// Insert nultiple records into table
-$insert = "INSERT INTO users
-(
-    firstname, lastname, email
-)
-VALUES 
-(
-    'Azeez', 'Aremu', 'azeezaremu@gmail.com'
-);";
-$insert .= "INSERT INTO users
-(
-    firstname, lastname, email
-)
-VALUES 
-(
-    'Junaid', 'Babatunde', 'junaidbabatunde@gmail.com'
-);";
+// Prepared statements.................
+$statement = $connection->prepare("INSERT INTO users (firstname, lastname, email) VALUES(?, ?, ?)");
+$statement->bind_param("sss", $firstname, $lastname, $email);
+// Set parameters and execute
+$firstname="Olaosebikan";
+$lastname="Bukunmi";
+$email="olaosebikanbukunmi@gmail.com";
+$statement->execute();
 
-$insert .= "INSERT INTO users
-(
-    firstname, lastname, email
-)
-VALUES 
-(
-    'Ismail', 'Owoade', 'ismailowoade@gmail.com'
-);";
-if ($connection->multi_query($insert) == TRUE)
-{
-    echo "Created new records succesfully";
-}
-else
-{
-    echo "Error: " . $insert . "<br>" . $connection->error;
-}
+$firstname="Olaosebikan";
+$lastname="Bukunmi";
+$email="olaosebikanbukunmi@gmail.com";
+$statement->execute();
+
+$firstname="Olaosebikan";
+$lastname="Bukunmi";
+$email="olaosebikanbukunmi@gmail.com";
+$statement->execute();
+
+echo "New records created!";
+
+$statement->close();
+
+
+// // Insert nultiple records into table-----------------------------------------
+// $insert = "INSERT INTO users
+// (
+//     firstname, lastname, email
+// )
+// VALUES 
+// (
+//     'Azeez', 'Aremu', 'azeezaremu@gmail.com'
+// );";
+// $insert .= "INSERT INTO users
+// (
+//     firstname, lastname, email
+// )
+// VALUES 
+// (
+//     'Junaid', 'Babatunde', 'junaidbabatunde@gmail.com'
+// );";
+
+// $insert .= "INSERT INTO users
+// (
+//     firstname, lastname, email
+// )
+// VALUES 
+// (
+//     'Ismail', 'Owoade', 'ismailowoade@gmail.com'
+// );";
+// if ($connection->multi_query($insert) == TRUE)
+// {
+//     echo "Created new records succesfully";
+// }
+// else
+// {
+//     echo "Error: " . $insert . "<br>" . $connection->error;
+// }
 
 // // ------------------------INSERT CODE $ LAST_ID-----------------------
 // // insert data into table
@@ -71,7 +95,7 @@ else
 // }
 
 // // --------------------------TABLE CODE-------------------------
-// // create table
+// create table
 // $create = "CREATE TABLE users
 // (
 //     id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
@@ -89,7 +113,7 @@ else
 //     echo "Failed to create table: " . $connection->error;
 // }
 
-// // -------------------DATABASE CODE-------------------------------
+// -------------------DATABASE CODE-------------------------------
 // // Create database
 // $create = "CREATE DATABASE myOO_db";
 // if ($connection->query($create) === TRUE)
@@ -101,7 +125,7 @@ else
 //     echo "Failed to create database: ".$connection->error;
 // }
 
-// 
+
 
 // close connection
 $connection->close();
