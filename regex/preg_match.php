@@ -9,5 +9,5 @@ $pattern = "/Qozeem/i";
 $search = preg_match($pattern, $sentence);
 
 // echo result
-echo $search;
+echo "$search\r\n";
 ?>

@@ -8,5 +8,5 @@ $pattern = "/company/i";
 // seearch the sentence and replace pattern with another string
 $search = preg_replace($pattern, "Amazon", $sentence);
 
-echo $search;
+echo "\r\n$search\r\n";
 ?>
