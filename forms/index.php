@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>PHP Form</title>
     <style>
         .error {color: #FF0000;}
     </style>
@@ -81,7 +81,7 @@
         <span class="error"><?php echo $websiteErr;?></span>
         <br><br>
 
-        Comment: <br><br>
+        Comment: <br>
         <textarea name="comment" id="" cols="40" rows="5"><?php echo $comment;?></textarea><br><br>
 
         Gender: <span class="error">* <?php echo $genderErr;?> </span> <br><br>
