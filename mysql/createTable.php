@@ -10,44 +10,44 @@ $databse_name_oop = "OOP";
 $connect_mysqli_oop = new mysqli($servername, $username, $password, $databse_name_oop);
 
 // define the sql statement 
-// $sql_oo = "CREATE TABLE Students (
-//     id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-//     name VARCHAR(30) NOT NULL,
-//     email VARCHAR(40) NOT NULL,
-//     registration_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-// )";
+$sql_oo = "CREATE TABLE Students (
+    id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(30) NOT NULL,
+    email VARCHAR(40) NOT NULL,
+    registration_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+)";
 
-// if($connect_mysqli_oop->query($sql_oo) === TRUE) {
-//     echo "Successfully created table - 'Object-Oriented' style\r\n";
-// }
-// else {
-//     echo "Failed creating table - 'Object-Oriented' style\r\n " . $connect_mysqli_oop->error;
-// }
+if($connect_mysqli_oop->query($sql_oo) === TRUE) {
+    echo "Successfully created table - 'Object-Oriented' style\r\n";
+}
+else {
+    echo "Failed creating table - 'Object-Oriented' style\r\n " . $connect_mysqli_oop->error;
+}
 
 // close connection: although, connection closes automatically wen the script ends
 // $connect_mysqli_oop->close();
 
 // -------MySQLi (Procedural style)-------
 // set database to connect to
-// $databse_name_procedural = "Procedural";
+$databse_name_procedural = "Procedural";
 
-// // overwrite connection string to include database name
-// $connect_mysqli_procedural = new mysqli($servername, $username, $password, $databse_name_procedural);
+// overwrite connection string to include database name
+$connect_mysqli_procedural = new mysqli($servername, $username, $password, $databse_name_procedural);
 
-// // define the sql statement 
-// $sql_procedural = "CREATE TABLE Students (
-//     id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-//     name VARCHAR(30) NOT NULL,
-//     email VARCHAR(40) NOT NULL,
-//     registration_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-// )";
+// define the sql statement 
+$sql_procedural = "CREATE TABLE Students (
+    id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(30) NOT NULL,
+    email VARCHAR(40) NOT NULL,
+    registration_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+)";
 
-// if (mysqli_query($connect_mysqli_procedural, $sql_procedural)) {
-//     echo "Successfully created table - 'Procedural' style\r\n";
-// }
-// else {
-//     echo "Failed creating table - 'Procedura' style\r\n" . mysqli-error($connect_mysqli_procedural);
-// }
+if (mysqli_query($connect_mysqli_procedural, $sql_procedural)) {
+    echo "Successfully created table - 'Procedural' style\r\n";
+}
+else {
+    echo "Failed creating table - 'Procedura' style\r\n" . mysqli_error($connect_mysqli_procedural);
+}
 
 // close connection: although, connection closes automatically wen the script ends
 // mysqli_close($connect_mysqli_procedural);
@@ -76,4 +76,3 @@ else {
 
 // close connection: although, connection closes automatically wen the script ends
 // $connect_pdo = null;
-?>
