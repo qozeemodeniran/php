@@ -10,7 +10,7 @@ if($connect->connect_error) {
     die("Connecttion failed: " . $connect->connect_error);
 }
 
-// prepared and bind
+// prepared sql and bind parameters
 $sql = $connect->prepare("INSERT INTO Students (
     name, email) 
     VALUES (?, ?)"
