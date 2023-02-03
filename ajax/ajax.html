@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajax 1</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+        }
+    </style>
+    <script>
+        function showHint(str) {
+            if(str.length === 0) {
+                document.getElementById("hint").innerHTML="";
+                return;
+            } else {
+                var xmlhttp = new XMLHttpRequest();
+                xmlhttp.onreadystatechange = function() {
+                    if(this.readyState == 4 && this.status == 200) {
+                        document.getElementById("hint").innerHTML=this.responseText;
+                    }
+                };
+                xmlhttp.open("GET", "hint.php?q=" + str, true);
+                xmlhttp.send();
+            }
+        }
+    </script>
+</head>
+<body>
+    <p><b>Type a name inside the filed.</b></p>
+    <form action="">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" onkeyup="showHint(this.value)">
+    </form>
+    <p>Suggested names: <span id="hint"></span></p>
+</body>
+</html>
