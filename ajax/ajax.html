@@ -23,7 +23,7 @@
                         document.getElementById("hint").innerHTML=this.responseText;
                     }
                 };
-                xmlhttp.open("GET", "hint.php?q=" + str, true);
+                xmlhttp.open("GET", "ajax.php?q=" + str, true);
                 xmlhttp.send();
             }
         }

@@ -1,4 +1,0 @@
-[03-Feb-2023 13:59:48 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function strisstr() in /Users/qozeemodeniran/Projects/web/php/ajax/hint.php:46
-Stack trace:
-#0 {main}
-  thrown in /Users/qozeemodeniran/Projects/web/php/ajax/hint.php on line 46

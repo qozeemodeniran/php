@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajax 2</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            padding: 5px;
+        }
+        table, td, th {
+            border: 1px solid white;
+            padding: 5px;
+        }
+        th {
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        function showStudents(str) {
+            if(str == "") {
+                document.getElementById("txtHint").innerHTML = "";
+                return;
+            } else {
+                var xmlhttp = new XMLHttpRequest();
+                xmlhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        document.getElementById("txtHint").innerHTML = this.responseText;
+                    }
+                };
+                xmlhttp.open("GET","ajax2.php?q="+str,true);
+                xmlhttp.send();
+            }
+        }
+    </script>
+</body>
+<form action="">
+    <select name="users" onchange="showStudents(this.value)">
+        <option value="">Select a student:</option>
+        <option value="1">Qozeem Odeniran</option>
+        <option value="2">Banji Odeniran</option>
+        <option value="3">Dami Odeniran</option>
+        <option value="4">Alabi Odeniran</option>
+        <option value="5">Jibril Odeniran</option>
+        <option value="6">Neema Odeniran</option>
+    </select>
+</form> <br>
+<div id="txtHint"><b>Student's info will appear here...</b>
+
+</div>
+</html>
